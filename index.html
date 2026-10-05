@@ -376,6 +376,19 @@ table.trial tr td:first-child{color:var(--ink);font-weight:600}
   .hero{padding-top:4.2rem}
   .lede{font-size:1.02rem}
 }
+
+/* --- ambient motion additions: subtle, additive, non-intrusive --- */
+@keyframes ringp{0%{transform:scale(.5);opacity:.85}100%{transform:scale(2.1);opacity:0}}
+.ringp{transform-box:fill-box;transform-origin:center;animation:ringp 2.8s ease-out infinite}
+@keyframes seqGlow{0%,100%{opacity:.35}18%{opacity:1}40%{opacity:.35}}
+.seqr1{animation:seqGlow 4.5s ease-in-out infinite}
+.seqr2{animation:seqGlow 4.5s ease-in-out .9s infinite}
+.seqr3{animation:seqGlow 4.5s ease-in-out 1.8s infinite}
+.flowseq{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out infinite}
+.flowseq2{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out .9s infinite}
+.flowseq3{stroke-dasharray:6 7;animation:dashmove 1.6s linear infinite,seqGlow 4.5s ease-in-out 1.8s infinite}
+@keyframes tiltK{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+.tilt{transform-box:fill-box;transform-origin:center;animation:tiltK 6s ease-in-out infinite}
 </style>
 </head>
 <body>
@@ -439,6 +452,28 @@ table.trial tr td:first-child{color:var(--ink);font-weight:600}
   <span class="eyebrow"><span class="n">01</span>The basics</span>
   <h2>The original <span class="hl">GLP-1</span></h2>
   <p class="lede">Semaglutide is a long-lasting copy of <strong>GLP-1</strong>, an &ldquo;I&rsquo;m full&rdquo; hormone your gut releases after meals. The natural hormone vanishes in minutes; semaglutide&rsquo;s tweaked structure survives about a week — which is why a single shot covers seven days.</p>
+      <div class="diagram reveal">
+      <svg viewBox="0 0 900 300" role="img" aria-label="One semaglutide molecule reaching the body through three doors: daily pill, weekly shot, higher-dose weekly shot">
+      <g font-family="-apple-system,'Segoe UI',Roboto,sans-serif" text-anchor="middle">
+        <text x="450" y="28" fill="#9db4d0" font-size="14">One molecule, three doors</text>
+        <circle class="ringp" cx="450" cy="105" r="34" fill="none" stroke="#7cc7ff" stroke-width="2"/>
+        <g class="glow-pulse"><circle cx="450" cy="105" r="34" fill="rgba(124,199,255,.10)" stroke="#7cc7ff" stroke-width="2.5"/>
+        <text x="450" y="113" fill="#7cc7ff" font-size="15" font-weight="800">SEMA</text></g>
+        <line class="flowseq" x1="450" y1="139" x2="180" y2="205" stroke="#7cc7ff" stroke-width="3"/>
+        <line class="flowseq2" x1="450" y1="139" x2="450" y2="205" stroke="#5b8cff" stroke-width="3"/>
+        <line class="flowseq3" x1="450" y1="139" x2="720" y2="205" stroke="#fbbf24" stroke-width="3"/>
+        <g class="seqr1"><rect x="105" y="205" width="150" height="58" rx="12" fill="#0d1626" stroke="#7cc7ff" stroke-width="2"/>
+        <text x="180" y="229" fill="#7cc7ff" font-size="14" font-weight="800">Rybelsus</text>
+        <text x="180" y="249" fill="#9db4d0" font-size="12">daily pill</text></g>
+        <g class="seqr2"><rect x="375" y="205" width="150" height="58" rx="12" fill="#0d1626" stroke="#5b8cff" stroke-width="2"/>
+        <text x="450" y="229" fill="#5b8cff" font-size="14" font-weight="800">Ozempic</text>
+        <text x="450" y="249" fill="#9db4d0" font-size="12">weekly shot</text></g>
+        <g class="seqr3"><rect x="645" y="205" width="150" height="58" rx="12" fill="#0d1626" stroke="#fbbf24" stroke-width="2"/>
+        <text x="720" y="229" fill="#fbbf24" font-size="14" font-weight="800">Wegovy</text>
+        <text x="720" y="249" fill="#9db4d0" font-size="12">weekly shot, higher</text></g>
+      </g>
+      </svg>
+      </div>
   <div class="diagram reveal">
     <svg viewBox="0 0 900 360" role="img" aria-label="One semaglutide molecule sold under three brand labels">
       <defs>
@@ -479,14 +514,15 @@ table.trial tr td:first-child{color:var(--ink);font-weight:600}
   <div class="diagram reveal">
     <svg viewBox="0 0 900 380" role="img" aria-label="Timeline from exendin-4 discovery to oral semaglutide">
       <path d="M40 190 L860 190" stroke="rgba(124,199,255,.3)" stroke-width="3"/>
+      <path class="flow" d="M40 190 L860 190" fill="none" stroke="#7cc7ff" stroke-width="3" opacity=".5"/>
       <g font-family="-apple-system,'Segoe UI',Roboto,sans-serif" text-anchor="middle">
-        <circle cx="70" cy="190" r="11" fill="#7cc7ff"/><text x="70" y="150" font-size="19" font-weight="800" fill="#e8eef7">1990s</text><text x="70" y="240" font-size="15" fill="#7cc7ff">Exendin-4</text><text x="70" y="262" font-size="14" fill="#9db4d0">Gila monster saliva</text>
-        <circle cx="183" cy="190" r="11" fill="#5b8cff"/><text x="183" y="262" font-size="19" font-weight="800" fill="#e8eef7">2005</text><text x="183" y="150" font-size="15" fill="#5b8cff">Byetta</text><text x="183" y="128" font-size="14" fill="#9db4d0">first GLP-1 drug</text>
-        <circle cx="296" cy="190" r="11" fill="#7cc7ff"/><text x="296" y="150" font-size="19" font-weight="800" fill="#e8eef7">2010</text><text x="296" y="240" font-size="15" fill="#7cc7ff">Victoza</text><text x="296" y="262" font-size="14" fill="#9db4d0">daily GLP-1</text>
-        <circle cx="409" cy="190" r="13" fill="url(#semaGrad)"/><text x="409" y="262" font-size="19" font-weight="800" fill="#e8eef7">2017</text><text x="409" y="150" font-size="15" fill="#5b8cff">Ozempic</text><text x="409" y="128" font-size="14" fill="#9db4d0">weekly semaglutide</text>
-        <circle cx="522" cy="190" r="11" fill="#7cc7ff"/><text x="522" y="150" font-size="19" font-weight="800" fill="#e8eef7">2019</text><text x="522" y="240" font-size="15" fill="#7cc7ff">Rybelsus</text><text x="522" y="262" font-size="14" fill="#9db4d0">first GLP-1 pill</text>
-        <circle cx="635" cy="190" r="11" fill="#5b8cff"/><text x="635" y="262" font-size="19" font-weight="800" fill="#e8eef7">2021</text><text x="635" y="150" font-size="15" fill="#5b8cff">Wegovy</text><text x="635" y="128" font-size="14" fill="#9db4d0">weight indication</text>
-        <circle cx="748" cy="190" r="11" fill="#7cc7ff"/><text x="748" y="150" font-size="19" font-weight="800" fill="#e8eef7">2025</text><text x="748" y="240" font-size="15" fill="#7cc7ff">Oral Wegovy</text><text x="748" y="262" font-size="14" fill="#9db4d0">25 mg weight pill</text>
+        <circle class="ringp" cx="70" cy="190" r="11" fill="none" stroke="#7cc7ff" stroke-width="2"/><circle cx="70" cy="190" r="11" fill="#7cc7ff"/><text x="70" y="150" font-size="19" font-weight="800" fill="#e8eef7">1990s</text><text x="70" y="240" font-size="15" fill="#7cc7ff">Exendin-4</text><text x="70" y="262" font-size="14" fill="#9db4d0">Gila monster saliva</text>
+        <circle class="ringp" cx="183" cy="190" r="11" fill="none" stroke="#5b8cff" stroke-width="2"/><circle cx="183" cy="190" r="11" fill="#5b8cff"/><text x="183" y="262" font-size="19" font-weight="800" fill="#e8eef7">2005</text><text x="183" y="150" font-size="15" fill="#5b8cff">Byetta</text><text x="183" y="128" font-size="14" fill="#9db4d0">first GLP-1 drug</text>
+        <circle class="ringp" cx="296" cy="190" r="11" fill="none" stroke="#7cc7ff" stroke-width="2"/><circle cx="296" cy="190" r="11" fill="#7cc7ff"/><text x="296" y="150" font-size="19" font-weight="800" fill="#e8eef7">2010</text><text x="296" y="240" font-size="15" fill="#7cc7ff">Victoza</text><text x="296" y="262" font-size="14" fill="#9db4d0">daily GLP-1</text>
+        <circle class="ringp" cx="409" cy="190" r="13" fill="none" stroke="url(#semaGrad)" stroke-width="2"/><circle cx="409" cy="190" r="13" fill="url(#semaGrad)"/><text x="409" y="262" font-size="19" font-weight="800" fill="#e8eef7">2017</text><text x="409" y="150" font-size="15" fill="#5b8cff">Ozempic</text><text x="409" y="128" font-size="14" fill="#9db4d0">weekly semaglutide</text>
+        <circle class="ringp" cx="522" cy="190" r="11" fill="none" stroke="#7cc7ff" stroke-width="2"/><circle cx="522" cy="190" r="11" fill="#7cc7ff"/><text x="522" y="150" font-size="19" font-weight="800" fill="#e8eef7">2019</text><text x="522" y="240" font-size="15" fill="#7cc7ff">Rybelsus</text><text x="522" y="262" font-size="14" fill="#9db4d0">first GLP-1 pill</text>
+        <circle class="ringp" cx="635" cy="190" r="11" fill="none" stroke="#5b8cff" stroke-width="2"/><circle cx="635" cy="190" r="11" fill="#5b8cff"/><text x="635" y="262" font-size="19" font-weight="800" fill="#e8eef7">2021</text><text x="635" y="150" font-size="15" fill="#5b8cff">Wegovy</text><text x="635" y="128" font-size="14" fill="#9db4d0">weight indication</text>
+        <circle class="ringp" cx="748" cy="190" r="11" fill="none" stroke="#7cc7ff" stroke-width="2"/><circle cx="748" cy="190" r="11" fill="#7cc7ff"/><text x="748" y="150" font-size="19" font-weight="800" fill="#e8eef7">2025</text><text x="748" y="240" font-size="15" fill="#7cc7ff">Oral Wegovy</text><text x="748" y="262" font-size="14" fill="#9db4d0">25 mg weight pill</text>
       </g>
     </svg>
     <p class="cap">Thirty years from lizard saliva to a once-daily weight-loss pill — each step made the hormone last longer.</p>
